@@ -57,14 +57,14 @@ function App() {
       <h1>TRIANGULATION</h1>
       <section id="center">
         <div className="first-pos">
-          <h2>Throw 1</h2>
+          <h2>Point 1</h2>
           <div className='wrap'>
             <div className='inp x1'>
               <label for="x1">X</label>
               <input id='x1' type="text" />
             </div>
             <div className='inp z1'>
-              <label for="z1">Z</label>
+              <label for="z1">Y</label>
               <input id='z1' type="text" />
             </div>
             <div className='inp angle1'>
@@ -75,14 +75,14 @@ function App() {
 
           </div>
         <div className="second-pos">
-          <h2>Throw 2</h2>
+          <h2>Point 2</h2>
           <div className='wrap'>
             <div className='inp x1'>
               <label for="x2">X</label>
               <input id='x2' type="text" />
             </div>
             <div className='inp z1'>
-              <label for="z2">Z</label>
+              <label for="z2">Y</label>
               <input id='z2' type="text" />
             </div>
             <div className='inp angle1'>
@@ -99,7 +99,7 @@ function App() {
       <div className="ticks"></div>
       <section id="spacer"></section>
 
-      <section id="output"><p>The Stronghold is at {strongholdPosition}</p></section>
+      <section id="output"><p>The Cross-point is at {strongholdPosition}</p></section>
     </>
   )
 }
