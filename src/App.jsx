@@ -15,7 +15,7 @@ function App() {
 
     // checking if the lines are parrallel
     if (Math.abs(m1 - m2) < 0.0001) {
-        alert("move to another position and throw again"); /* the lines are parrallel */
+        alert("The 2 lines are parrallel"); /* the lines are parrallel */
         return null;
     }
 
