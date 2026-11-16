@@ -3,9 +3,9 @@ import './App.css'
 
 function App() {
 
-  const [strongholdPosition, setStrongholdPosition] = useState("");
+  const [CrossPoint, setCrossPoint] = useState("");
 
-  function locateStronghold(x1, z1, angle1, x2, z2, angle2) {
+  function locateCrossPoint(x1, y1, angle1, x2, y2, angle2) {
 
     const rad1 = (-angle1) * (Math.PI / 180);
     const rad2 = (-angle2) * (Math.PI / 180);
@@ -19,16 +19,14 @@ function App() {
         return null;
     }
 
-    const targetZ = (x1 - x2 - m1 * z1 + m2 * z2) / (m2 - m1);
-    const targetX = x1 + m1 * (targetZ - z1);
-    const exactX = Math.round(targetX);
-    const exactZ = Math.round(targetZ);
+    const targetY = (x1 - x2 - m1 * y1 + m2 * y2) / (m2 - m1);
+    const targetX = x1 + m1 * (targetY - y1);
+    const exactX = targetX.toFixed(5);
+    const exactY = targetY.toFixed(5);
     
-    // the chunk can be claculated by Math.floor(exact / 16);
 
-    // console.log(`coordinates: x: ${exactX}, z: ${exactZ}`);
     
-    return { x: exactX, z: exactZ };
+    return { x: exactX, y: exactY };
 }
 
 
@@ -38,14 +36,14 @@ function App() {
     sumbitBtn.addEventListener("click", ()=> {
 
       let x1 = parseFloat(document.getElementById("x1").value);
-      let z1 = parseFloat(document.getElementById("z1").value);
+      let y1 = parseFloat(document.getElementById("y1").value);
       let a1 = parseFloat(document.getElementById("a1").value);
 
       let x2 = parseFloat(document.getElementById("x2").value);
-      let z2 = parseFloat(document.getElementById("z2").value);
+      let y2 = parseFloat(document.getElementById("y2").value);
       let a2 = parseFloat(document.getElementById("a2").value);
 
-      setStrongholdPosition(`${locateStronghold(x1, z1, a1, x2, z2, a2).x}, ${locateStronghold(x1, z1, a1, x2, z2, a2).z}`);
+      setCrossPoint(`${locateCrossPoint(x1, y1, a1, x2, y2, a2).x}, ${locateCrossPoint(x1, y1, a1, x2, y2, a2).y}`);
 
     });
 
@@ -61,15 +59,15 @@ function App() {
           <div className='wrap'>
             <div className='inp x1'>
               <label for="x1">X</label>
-              <input id='x1' type="text" />
+              <input id='x1' type="number" />
             </div>
-            <div className='inp z1'>
-              <label for="z1">Y</label>
-              <input id='z1' type="text" />
+            <div className='inp y1'>
+              <label for="y1">Y</label>
+              <input id='y1' type="number" />
             </div>
             <div className='inp angle1'>
               <label for="a1">angle</label>
-              <input id='a1' type="text" />
+              <input id='a1' type="number" />
             </div>
           </div>
 
@@ -79,15 +77,15 @@ function App() {
           <div className='wrap'>
             <div className='inp x1'>
               <label for="x2">X</label>
-              <input id='x2' type="text" />
+              <input id='x2' type="number" />
             </div>
-            <div className='inp z1'>
-              <label for="z2">Y</label>
-              <input id='z2' type="text" />
+            <div className='inp y1'>
+              <label for="y2">Y</label>
+              <input id='y2' type="number" />
             </div>
             <div className='inp angle1'>
               <label for="a2">angle</label>
-              <input id='a2' type="text" />
+              <input id='a2' type="number" />
             </div>
           </div>
         </div>
@@ -99,7 +97,7 @@ function App() {
       <div className="ticks"></div>
       <section id="spacer"></section>
 
-      <section id="output"><p>The Cross-point is at {strongholdPosition}</p></section>
+      <section id="output"><p>The Cross-point is at <span style={{color: 'rgb(87, 34, 126)'}}>{CrossPoint}</span></p></section>
     </>
   )
 }

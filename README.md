@@ -1,16 +1,18 @@
-# React + Vite
+# The logic
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+const rad1 = (-angle1) * (Math.PI / 180);
+const rad2 = (-angle2) * (Math.PI / 180);
 
-Currently, two official plugins are available:
+const m1 = Math.tan(rad1);
+const m2 = Math.tan(rad2);
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+// checking if the lines are parrallel
+if (Math.abs(m1 - m2) < 0.0001) {
+    alert("The 2 lines are parrallel"); /* the lines are parrallel */
+    return null;
+}
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+const targetY = (x1 - x2 - m1 * y1 + m2 * y2) / (m2 - m1);
+const targetX = x1 + m1 * (targetY - y1);
+const exactX = targetX.toFixed(5);
+const exactY = targetY.toFixed(5);
